@@ -39,3 +39,7 @@
 
 - Array
 - LinkedList [Recommended]
+
+> Trick Points
+- stack is designed to work in reverse order
+- Most stack questions will require 2 stacks for implementation

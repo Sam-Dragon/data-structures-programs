@@ -34,3 +34,7 @@
 
 - Array
 - LinkedList [Recommended]
+
+> Trick Points
+- stack is designed to work in sequential order
+- Most queue questions will require 2 queues for implementation

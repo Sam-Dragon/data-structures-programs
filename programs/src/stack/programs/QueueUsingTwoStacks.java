@@ -3,8 +3,9 @@ package stack.programs;
 import java.util.Stack;
 
 public class QueueUsingTwoStacks {
-    private Stack<Integer> stack1;
-    private Stack<Integer> stack2;
+    private Stack<Integer> stack1 = new Stack<>();
+    private Stack<Integer> stack2 = new Stack<>();
+
 
     public void enqueue(int value) {
         if (stack1.isEmpty())
@@ -24,9 +25,38 @@ public class QueueUsingTwoStacks {
     }
 
     public Integer dequeue() {
-        if(stack1.isEmpty())
+        if (stack1.isEmpty())
             return null;
 
         return stack1.pop();
+    }
+
+    public Integer peek() {
+        if (stack1.isEmpty())
+            return null;
+
+        return stack1.peek();
+    }
+
+    public void display() {
+        for (int i = stack1.size() - 1; i >= 0; i--) {
+            System.out.print(stack1.get(i) + ", ");
+        }
+        System.out.println();
+    }
+
+    static void main() {
+        QueueUsingTwoStacks queueUsingTwoStacks = new QueueUsingTwoStacks();
+        queueUsingTwoStacks.enqueue(10);
+        queueUsingTwoStacks.enqueue(20);
+        queueUsingTwoStacks.enqueue(30);
+
+        queueUsingTwoStacks.display();
+        System.out.println(queueUsingTwoStacks.peek());
+        int removed = queueUsingTwoStacks.dequeue();
+        System.out.println(removed);
+
+        queueUsingTwoStacks.display();
+        System.out.println(queueUsingTwoStacks.peek());
     }
 }

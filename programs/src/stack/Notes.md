@@ -18,7 +18,7 @@
 > Use cases
 
 - Method calls
-- Recursion
+- **Recursion**
 - Exceptions callback
 - Infix to postfix expression,
 - Tower of Hanoi

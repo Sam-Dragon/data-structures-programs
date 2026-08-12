@@ -35,6 +35,12 @@
 - Array
 - LinkedList [Recommended]
 
+> Points to Remember
+
+- We can implement queue using single pointer but if we use two pointer, insertion becomes
+  faster [Additional memory is allocated]
+
 > Trick Points
+
 - stack is designed to work in sequential order
 - Most queue questions will require 2 queues for implementation

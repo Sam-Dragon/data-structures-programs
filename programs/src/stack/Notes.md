@@ -4,6 +4,9 @@
 
 - It is the linear data structure while is used for storing the elements
 - It works on the principle of LIFO [Last In First Out] or FILO [First In Last Out]
+- It is useful when you work with **HISTORY** of data
+- stack is designed to work in **REVERSED** order
+- Most stack questions will require 2 stacks for implementation
 
 > Operations
 
@@ -17,12 +20,19 @@
 
 > Use cases
 
+- Balancing of Symbols
 - Method calls
 - **Recursion**
 - Exceptions callback
 - Infix to postfix expression,
+- Evaluation of postfix expression,
 - Tower of Hanoi
 - Object creation and destruction
+- Find the spans [Stock Market Spans]
+- Page visit in browsers
+- Undo Sequence in editor
+- Matching Tags in HTML & XML
+- **Indirect Uses**: It is used in Trees [BFS]
 
 > Limitations
 
@@ -39,7 +49,3 @@
 
 - Array
 - LinkedList [Recommended]
-
-> Trick Points
-- stack is designed to work in reverse order
-- Most stack questions will require 2 stacks for implementation

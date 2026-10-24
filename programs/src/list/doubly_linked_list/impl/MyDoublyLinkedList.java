@@ -1,16 +1,16 @@
-package linked_list.impl;
+package list.doubly_linked_list.impl;
 
-import linked_list.node.Node;
+import list.doubly_linked_list.node.Node;
 
-public class MyLinkedList {
+public class MyDoublyLinkedList {
 
     public static Node head, tail;
     public static int length;
 
-    public MyLinkedList() {
+    public MyDoublyLinkedList() {
     }
 
-    public MyLinkedList(int value) {
+    public MyDoublyLinkedList(int value) {
         Node node = new Node(value);
         head = tail = node;
         length = 1;
@@ -18,15 +18,15 @@ public class MyLinkedList {
 
     /*
      * Append : Adds the value to the last
-     * - It is used in queue implementation
      */
     public void append(int value) {
         Node node = new Node(value);
 
-        if (head == null)
+        if (length == 0)
             head = tail = node;
         else {
             tail.next = node;
+            node.prev = tail;
             tail = node;
         }
 
@@ -35,15 +35,15 @@ public class MyLinkedList {
 
     /*
      * Prepend : Adds the value to the first
-     * - It is used in stack implementation
      */
     public void prepend(int value) {
         Node node = new Node(value);
 
-        if (head == null)
+        if (length == 0)
             head = tail = node;
         else {
             node.next = head;
+            head.prev = node;
             head = node;
         }
 
@@ -59,10 +59,8 @@ public class MyLinkedList {
 
         if (index == 0) {
             prepend(value);
-            return true;
         } else if (index == length) {
             append(value);
-            return true;
         } else {
             Node node = new Node(value);
 
@@ -70,11 +68,15 @@ public class MyLinkedList {
             Node curr = prev.next;
 
             prev.next = node;
+            node.prev = prev;
+
             node.next = curr;
+            curr.prev = node;
 
             length++;
-            return true;
         }
+
+        return true;
     }
 
     /*
@@ -88,11 +90,14 @@ public class MyLinkedList {
         Node temp = head;
         if (length == 1)
             head = tail = null;
-        else
+        else {
             head = head.next;
+            head.prev = null;
+        }
 
         length--;
 
+        temp.prev = null;
         temp.next = null;
         return temp;
     }
@@ -104,18 +109,17 @@ public class MyLinkedList {
         if (length == 0)
             return null;
 
-        Node temp = head;
+        Node temp = tail;
         if (length == 1)
             head = tail = null;
         else {
-            while (temp != null && temp.next != tail)
-                temp = temp.next;
-
-            tail = temp;
+            tail = tail.prev;
+            tail.next = null;
         }
 
         length--;
 
+        temp.prev = null;
         temp.next = null;
         return temp;
     }
@@ -136,9 +140,13 @@ public class MyLinkedList {
             Node curr = prev.next;
 
             prev.next = curr.next;
+            curr.next.prev = prev;
+
             length--;
 
+            curr.prev = null;
             curr.next = null;
+
             return curr;
         }
     }
@@ -147,14 +155,21 @@ public class MyLinkedList {
      * get : fetches the node at the specified index
      */
     public Node get(int index) {
-        if (length == 0 || index < 0 || index >= length)
+        if (index < 0 || index >= length)
             return null;
 
-        Node temp = head;
-        for (int i = 0; i < index; i++)
-            temp = temp.next;
-
-        return temp;
+        int mid = length / 2;
+        if (index < mid) {
+            Node temp = head;
+            for (int i = 0; i < index; i++)
+                temp = temp.next;
+            return temp;
+        } else {
+            Node temp = tail;
+            for (int i = length - 1; i > index; i--)
+                temp = temp.prev;
+            return temp;
+        }
     }
 
     /*

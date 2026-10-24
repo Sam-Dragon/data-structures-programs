@@ -1,8 +1,8 @@
-package linked_list.programs;
+package list.doubly_linked_list.programs;
 
-import linked_list.node.Node;
+import list.doubly_linked_list.node.Node;
 
-import static linked_list.impl.MyLinkedList.head;
+import static list.linked_list.impl.MyLinkedList.head;
 
 public class SwapPairs {
 
